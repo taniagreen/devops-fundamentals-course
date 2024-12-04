@@ -3,11 +3,6 @@
 freespace=$(df -k / | awk 'NR==2 {print $4}')
 treshold="141872010"
 
-if [ -n "$1" ]
-    then
-       treshold=$1
-    fi
-
 checkFreeSpace() {
 if ((freespace<"$1"))
     then
@@ -16,7 +11,12 @@ if ((freespace<"$1"))
     fi
 }
 
-checkFreeSpace $treshold
+if [ -n "$1" ]
+    then
+       treshold=$1
+    fi
 
-
-
+while
+checkFreeSpace $treshold; 
+do sleep 5; 
+done
