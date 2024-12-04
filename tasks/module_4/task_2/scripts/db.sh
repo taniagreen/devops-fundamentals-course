@@ -28,7 +28,12 @@ function help {
 }
 
 function validate {
-  if [[ "$1" =~ ^[[:alpha:]]+$ ]]; then return 1; else return 0; fi
+  if [[ "$1" =~ ^[[:alpha:]]+$ ]]; 
+    then return 1; 
+    else 
+      echo ""$2" name must have only latin letters. Try again."
+      exit 1; 
+  fi
 }
 
 function addToFile {
@@ -56,20 +61,9 @@ function createFolder {
 
 function add {
     read -p "Enter user name: " username
-    validate $username
-    if [[ "$?" == 0 ]];
-    then
-      echo "User name must have only latin letters. Try again."
-      exit 1
-    fi
-
+    validate $username "User name"
     read -p "Enter user role: " role
-    validate $role
-    if [[ "$?" == 0 ]]
-    then
-      echo "User role must have only latin letters. Try again."
-      exit 1
-    fi
+    validate $role "Role"
 
     echo "User and role successfully added"
 
