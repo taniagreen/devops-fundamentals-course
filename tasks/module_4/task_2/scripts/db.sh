@@ -96,7 +96,7 @@ else
 fi
 }
 
-function find {
+function findUser {
     read -p "Find user name: " username
 
     if [[ "$username" != "" ]]
@@ -152,7 +152,7 @@ case $COMMAND in
 
   "find")
     checkCreateFile
-    find
+    findUser
     ;;
 
   "list")
