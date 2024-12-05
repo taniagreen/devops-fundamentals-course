@@ -21,6 +21,11 @@ fi
 echo "Building the app with configuration: $CONFIGURATION..."
 npm run build --configuration=$CONFIGURATION
 
-# Step 4: archive content of thce dist folder
+# Step 4: count build files
+cd "./dist"
+files_number=$(find . -not -type d | wc -l)
+echo "Number of build files: $files_number"
+
+# Step 5: archive content of thce dist folder
 echo "Archiving build files..."
-zip -r ./dist/client-app.zip ./dist/* 
+zip -r client-app.zip * 
