@@ -2,12 +2,11 @@
 
 directory="./"
 
-if [ -n "$1" ]
-    then
-       directory=$1
-       cd "$directory"
-    fi
+if [ -n "$1" ]; then
+    directory=$1
+    cd "$directory"
+fi
 
-files_number=$(ls -A | wc -l)
+files_number=$(find . -not -type d | wc -l)
 
 echo "Number of files in the directory (including subdirectories): $files_number"
