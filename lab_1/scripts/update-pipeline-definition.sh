@@ -20,7 +20,7 @@ if [ -z "$JQ_VERSION" ]; then
 fi
 
 # Validate if the necessary properties are present in the given JSON definition. If not, throw an error and stop execution.
-if ! jq -e '.pipeline | has("version")' "$JSON_PATH" > /dev/null; then
+if ! jq -e '.pipeline.version' "$JSON_PATH" > /dev/null; then
   echo "Error: Missing required 'version' properties in 'pipeline'"
   exit 1
 fi
